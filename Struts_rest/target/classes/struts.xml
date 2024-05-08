@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+    <constant name="struts.enable.DynamicMethodInvocation" value="false"/>
+    <constant name="struts.devMode" value="true"/>
+
+   
+    
+    
+    <package name="user" namespace="/user" extends="struts-default,json-default">
+      <default-action-ref name="get" />
+       
+        <action name="authenticate" class="controller.UserController"  method="authenticate">
+        <result  type="json"></result>
+       </action>
+       
+        <action name="get" class="controller.UserController"  method="fetchUsers">
+        <result  type="json"></result>
+       </action>
+       
+        <action name="add" class="controller.UserController"  method="addUser">
+        <result  type="json"></result>
+        </action>
+       
+       
+        <action name="update" class="controller.UserController"  method="updateUser">
+        <result  type="json"></result>
+        </action>
+        
+        <action name="delete" class="controller.UserController"  method="deleteUser">
+        <result  type="json"></result>
+        </action>
+     </package>
+     
+     <package name="inventory" namespace="/inventory" extends="struts-default,json-default">
+     
+      <default-action-ref name="get" />
+        
+         <action name="get" class="controller.InventoryController"  method="fetchInventory">
+	      <result  type="json"></result>
+	      </action>
+	      
+	     <action name="add" class="controller.InventoryController"  method="addInventory">
+	      <result  type="json"></result>
+	      </action>
+	      
+	       <action name="delete" class="controller.InventoryController"  method="deleteInventory">
+	      <result  type="json"></result>
+	      </action>
+	      
+	        <action name="update" class="controller.InventoryController"  method="updateInventory">
+	        <result  type="json"></result>
+	        </action>
+	        
+	        <action name="getMin" class="controller.InventoryController"  method="minInventory">
+	      <result  type="json"></result>
+	      </action>
+	       <action name="topSale" class="controller.InventoryController"  method="topSale">
+	      <result  type="json"></result>
+	      </action>
+	        
+	  </package>
+	  
+	     <package name="cart" namespace="/cart" extends="struts-default,json-default">
+     
+         <default-action-ref name="get" />
+        
+         <action name="get" class="controller.CartController"  method="getCart">
+	      <result  type="json"></result>
+	      </action>
+	      
+	     <action name="add" class="controller.CartController"  method="addCart">
+	      <result  type="json"></result>
+	      </action>
+	      
+	       <action name="delete" class="controller.CartController"  method="deleteCart">
+	      <result  type="json"></result>
+	      </action>
+	      
+	        <action name="update" class="controller.CartController"  method="updateCart">
+	        <result  type="json"></result>
+	        </action>
+	        
+	  </package>
+	  
+	   <package name="bill" namespace="/bill" extends="struts-default,json-default">
+    
+          <action name="get" class="controller.billController"  method="getBill">
+	      <result  type="json"></result>
+	      </action>
+	      
+	      
+	     <action name="add" class="controller.billController"  method="addBill">
+	      <result  type="json"></result>
+	      </action>
+	      
+         </package>
+         
+          <package name="wallet" namespace="/wallet" extends="struts-default,json-default">
+    
+          <action name="get" class="controller.wallletController"  method="getWallet">
+	      <result  type="json"></result>
+	      </action>
+	      
+	       <action name="update" class="controller.wallletController"  method="updateWallet">
+	      <result  type="json"></result>
+	      </action>
+	      
+	       <action name="redeem" class="controller.wallletController"  method="redeemWallet">
+	      <result  type="json"></result>
+	      </action>
+	      
+	      
+         </package>
+       
+        <include file="example.xml"/>
+
+    <package name="default" namespace="/" extends="struts-default">
+
+        <default-action-ref name="index"/>
+
+        <action name="index">
+            <result type="redirectAction">
+                <param name="actionName">HelloWorld</param>
+                <param name="namespace">/example</param>
+            </result>
+        </action>
+
+    </package>
+
+    <!-- Add addition packages and configuration here. -->
+</struts>
